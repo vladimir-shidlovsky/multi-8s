@@ -1,6 +1,3 @@
-git PAT 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
-travis encrypt-file service-account.json -r vladimir-shidlovsky/multi-8s --org
-
 sudo: required
 services:
   - docker
@@ -16,7 +13,7 @@ before_install:
   - gcloud auth activate-service-account --key-file service-account.json.enc
   - gcloud config set project multi-k8s-314221
   - gcloud config set compute/zone us-central1-c
-  - gcloud container cluster get-credentials multi-cluster
+  - gcloud container clusters get-credentials multi-cluster
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t shidlovsky/react-test -f ./client/Dockerfile.dev ./client
 
